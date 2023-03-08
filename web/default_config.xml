@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<config>
+	<filename>bbbas</filename>
+	<record_length>10</record_length>
+	<sample-rate>130208</sample-rate>
+    <fft_size></fft_size>
+	<channels>8</channels>
+	<description>Insert recording description</description>
+	<channel_1>Insert description of channel one</channel_1>
+	<channel_2>Insert description of channel two</channel_2>
+	<channel_3>Insert description of channel three</channel_3>
+	<channel_4>Insert description of channel four</channel_4>
+	<channel_5>Insert description of channel five</channel_5>
+	<channel_6>Insert description of channel six</channel_6>
+	<channel_7>Insert description of channel seven</channel_7>
+	<channel_8>Insert description of channel eight</channel_8>
+</config>

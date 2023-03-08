@@ -1,0 +1,37 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+	$("#recording_table").dataTable( {
+		"dom": '<"toolbar">frtip',
+		"order": [[ 2, "desc" ]], 
+		"iDisplayLength": 25, 
+		});
+	$("#recording_table").closest('.toolbar_buttons').detach().appendTo($("#recording_table").closest("div.toolbar"));
+	$('.select_all').click(function(e){
+    var table= $(e.target).closest('table');
+    $('td input:checkbox',table).prop('checked',this.checked);
+});
+	} );
+</script>
+<div class='toolbar_buttons'>
+<input type="submit" value="Delete Selected" title="Click to delete selected recordings" onclick="js_delete_file(this);" />
+<input type="submit" value="Use Config settings" title="Use config settings from the selected file" onclick="js_duplicate_settings(this);" />
+<input type="submit" value="Edit Metadata" title="Edit the filename or descriptions" onclick="js_edit(this);" />
+<input type="submit" value="Analyze Recordings" title="Analyze the selected recordings" onclick="js_analyze(this);" />
+</div>
+<table id="recording_table" class="display" >
+	<thead>
+		<tr>
+			<th><input type="checkbox" class="select_all" /></th>
+			<th>Title</th>
+			<th>Recorded</th>
+			<th>Size (MB)</th>
+			<th>Length</th>
+			<th>Channels</th>
+			<th>Sample Rate</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+	{FILE_LIST}
+	</tbody>
+</table>

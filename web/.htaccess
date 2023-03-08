@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^(.+).bin /get/run_code.php?cmd=binary_file&filename=$1 [QSA,L]
+RewriteRule ^(.+).flac /get/run_code.php?cmd=flac_file&filename=$1 [QSA,L]
+RewriteRule ^(.+).xml /get/run_code.php?cmd=xml_file&filename=$1 [QSA,L]

@@ -1,0 +1,9 @@
+data/
+*.dri
+*.gpi
+*.zip
+.ipynb*
+untracked
+*.o
+*.pyc
+prucode*.bin

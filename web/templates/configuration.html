@@ -1,0 +1,76 @@
+			<table>
+				<tr>
+					<td>Config file: </td>
+					<td>
+						<select id='config_xmls' name="select_config" class="target">
+							<option selected="selected"></option>
+							{CONFIGS}
+						</select>
+						<script>
+							$( ".target" ).change(function () { 
+								if ($("#config_xmls").find("option").filter(":selected").text().length ) {
+									$("#configuration").find(".tog_dis").removeAttr("disabled");
+								} else {
+									$("#configuration").find(".tog_dis").attr("disabled","disabled");
+								}
+							})
+						</script>
+						<input class='tog_dis' type="submit" value="Load" disabled='disabled' title='Click to load this recording configuration' onclick='js_load_config(this);'/>
+						<input class='tog_dis' type="submit" value="Delete" disabled='disabled' title='Click to delete this recording configuration' onclick='js_delete_config(this);'/>
+						<input type="submit" value="Restore Defaults" title='Click to restore default recording configuration' onclick='js_restore_config(this);'/>
+					</td>
+				</tr>
+				<tr>
+					<td>Filename: </td>
+					<td>
+						<input name="filename" id="filename" type="text" value="{FILENAME}" title="Name of the file produced"  style="width:200px;"/>
+					<span class="small">(Leave blank for default name)</span>
+				</tr>
+				<tr>
+					<td>Record length (in seconds): </td>
+					<td>
+						<input name="record_length" id="record_length" type="text" value="{RECORD_LENGTH}" title="Number of seconds to record"  style="width:100px;"/>
+						<span class="small">(Leave blank for maximum record length)</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Sample Rate :</td>
+					<td>
+						<select id='sample_rate' name="sample_rate" class="target">
+							<option>130208</option>
+							<option>97656</option>
+							<option>78125</option>
+							<option>65104</option>
+							<option>48828</option>
+						</select>
+						<span class="small">Samples per second (per channel)</span>
+					</td>
+				</tr>
+				<tr>
+					<td>Number of channels :</td>
+					<td>
+						<select id='num_channels' name="num_channels" class="target" onchange="js_change_channels(this)">
+							<option>8</option><option>7</option><option>6</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+						</select>
+                        <input name="shift_channels" id="shift_channels" type="checkbox" {SHIFT}>
+						<span>Shift Channels?</span>
+						<span class="small">(Check to use the last n channels, rather than the first)</span>
+                    </td>
+				</tr>
+				<tr>
+					<td>FFT Size: </td>
+					<td>
+						<input name="fft_size" id="fft_size" type="text" value="{FFT_SIZE}" title="Size of FFT used in 1/3 octave plots"  style="width:100px;"/>
+						<span class="small">(If blank, sample rate will be used.)</span>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="Show Descriptions" title="Show/Hide the channel descriptions" onclick="js_toggle(this,'description_table');" />
+			<input type="submit" value="Update" title='Click to update this recording configuration' onclick='js_update_config(this);'/>
+			<input type="submit" value="Save as ..." title='Click to save this recording configuration' onclick='js_save_config(this);'/>
+			<table class='hide' id="description_table">
+				<tr><td>Description</td>
+					<td><textarea id='description' title="Short description of the data" rows='3' cols='50' style='resize:none;' maxlength='65536'>{DESCRIPTION}</textarea></td>
+				</tr>
+				{CHANNELS}
+			</table>
